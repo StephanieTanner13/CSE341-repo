@@ -7,17 +7,39 @@
 
 <body>
   <% include ../includes/nav.ejs %>
-    <div class="jumbotron text-center">
-      <div class="container">
-        <h1>
-          <%= title %>
-        </h1>
-        <p>This is the placeholder for Team Activity 02</p>
-      </div>
-    </div>
+  <div class="jumbotron text-center">
     <div class="container">
+      <h1>
+        <%= title %>
+      </h1>
+      <!--Requirement 1-->
+      <form class="signup-form" action="/ta02/addUser" method="POST">
+        <div class="form-control">
+          <label for="newUser">User Name</label>
+          <input type=text name="newUser" id="newUser">
+        </div>
+        <button type="submit">Add User</button>
+      </form>
 
+      <!--Requirement 1 loop-->
+      <h2>Current Users</h2>
+      <% for(user of users) { %>
+        <p><%= user %></p>
+      <% } %>
+
+      <!--Requirement 3-->
+      <form class="remove-user-form" action="/ta02/removeUser" method="POST">
+        <div class="form-control">
+          <label for="removeUser">User Name to Remove</label>
+          <input type=text name="removeUser" id="removeUser">
+        </div>
+        <button type="submit">Remove User</button>
+      </form>
     </div>
+  </div>
+  <div class="container">
+
+  </div>
 
 
 </body>
