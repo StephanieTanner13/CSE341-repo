@@ -13,6 +13,29 @@
           <%= title %>
         </h1>
         <p>This is the placeholder for Team Activity 03</p>
+        <h2>Search for Term</h2>
+        <form action="" method="get" id="tag">
+          <select name="tags" id="options" style="color: black;">
+            <% for( let tag of tags) { %>
+              <option value="<%= tag %>"><%= tag %></option>
+            <% } %>
+
+          </select>
+        <button class="btn" style="color: black" onclick="update()"> Search </button>
+          
+        </form>
+        <div class="card-container">
+          <% for (let item of items) { %>
+            <div class="card-content">
+              <h1><%= item.name %></h1>
+              <h2><%= item.tags %></h2>
+              <h2>$<%= parseFloat(item.price) %></h2>
+              <img src="<%= item.imageUrl %>" alt="<%= item.name %>">
+              <h2><%= item.description %></h2>
+            </div>
+            <% } %>
+        </div>
+
       </div>
     </div>
     <div class="container">
