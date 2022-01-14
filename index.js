@@ -14,7 +14,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const PORT = process.env.PORT || 3000; // So we can run on heroku || (OR) localhost:5000
+const PORT = process.env.PORT || 3000; // So we can run on heroku || (OR) localhost:3000
+const cors = require('cors') // Place this with other requires (like 'path' and 'express')
 
 const app = express();
 
@@ -50,3 +51,19 @@ app
     res.render('pages/404', { title: '404 - Page Not Found', path: req.url });
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+const corsOptions = {
+    origin: "https://<your_app_name>.herokuapp.com/",
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    family: 4
+};
+
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://Stephanie:mFtKj6nKLfV3iyQG@cluster0.f4ift.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
